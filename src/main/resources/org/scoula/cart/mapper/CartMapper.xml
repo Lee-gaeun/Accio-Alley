@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에는 인터페이스이름까지 넣어줌. -->
+<!-- 패키지경로와 인터페이스명은 슬랙에 복사하는 방법있음. -->
+<mapper namespace="org.scoula.cart.mapper.CartMapper">
+    <!-- 장바구니 상품 추가 -->
+    <insert id="addToCart" parameterType="org.scoula.cart.domain.CartVO" useGeneratedKeys="true" keyProperty="cartId">
+        INSERT INTO carts (user_id, product_id, quantity, is_ordered)
+        VALUES (#{userId}, #{productId}, #{quantity}, #{isOrdered})
+    </insert>
+
+    <!-- 장바구니 조회 -->
+    <select id="getCart" parameterType="long" resultType="org.scoula.cart.domain.CartVO">
+        SELECT
+            c.cart_id AS cartId,
+            c.user_id AS userId,
+            c.product_id AS productId,
+            c.quantity,
+            c.is_ordered AS isOrdered,
+            p.product_name AS productName,
+            p.price
+        FROM carts c
+                 JOIN products p ON c.product_id = p.product_id
+        WHERE c.user_id = #{userId}
+    </select>
+
+    <!-- 수량 변경 -->
+    <update id="updateQuantity">
+        UPDATE carts
+        SET quantity = #{quantity}
+        WHERE cart_id = #{cartId}
+    </update>
+
+    <!-- 장바구니 항목 삭제 -->
+    <delete id="deleteCartItem" parameterType="long">
+        DELETE FROM carts WHERE cart_id = #{cartId}
+    </delete>
+</mapper>

@@ -15,7 +15,10 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = {
         "org.scoula.exception",
-        "org.scoula.controller"
+        "org.scoula.controller",
+        "org.scoula.cart.controller",
+        "org.scoula.cart.service",
+        "org.scoula.cart.mapper"
 })
 public class ServletConfig implements WebMvcConfigurer {
 
@@ -44,6 +47,8 @@ public class ServletConfig implements WebMvcConfigurer {
         StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
         return resolver;
     }
+
+
 
 
 }
