@@ -18,6 +18,7 @@ public class CartServiceImpl implements CartService{
         this.cartMapper = cartMapper;
     }
 
+    // 장바구니 상품 담기
     @Override
     public CartDTO addToCart(CartDTO cartDTO) {
         // 1) 이미 존재하는지 체크
@@ -43,6 +44,7 @@ public class CartServiceImpl implements CartService{
         }
     }
 
+    // 특정 유저 장바구니 조회
     @Override
     public List<CartDTO> getCart(Long userId) {
         List<CartVO> voList = cartMapper.getCart(userId);
@@ -51,6 +53,7 @@ public class CartServiceImpl implements CartService{
                 .collect(Collectors.toList());
     }
 
+    // 수량 업데이트
     @Override
     public CartDTO updateQuantity(Long cartId, Map<String, Integer> quantityUpdate) {
         Integer quantity = quantityUpdate.get("quantity");
@@ -65,6 +68,7 @@ public class CartServiceImpl implements CartService{
         return CartDTO.fromVO(updatedVO);
     }
 
+    // 특정 상품 삭제
     @Override
     public void deleteCartItem(Long cartId) {
         cartMapper.deleteCartItem(cartId);
