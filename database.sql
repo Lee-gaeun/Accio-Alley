@@ -31,7 +31,8 @@ CREATE TABLE carts (
                        quantity INT NOT NULL,
                        is_ordered BOOLEAN DEFAULT FALSE,
                        FOREIGN KEY (user_id) REFERENCES users(id),
-                       FOREIGN KEY (product_id) REFERENCES products(product_id)
+                       FOREIGN KEY (product_id) REFERENCES products(product_id),
+                       UNIQUE KEY unique_user_product (user_id, product_id)
 );
 
 -- 리뷰 테이블
