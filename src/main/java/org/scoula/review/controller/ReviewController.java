@@ -1,7 +1,7 @@
 package org.scoula.review.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.scoula.review.domain.ReviewVO;
+import org.scoula.review.dto.ReviewDTO;
 import org.scoula.review.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,20 +16,20 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<String> createReview(@RequestBody ReviewVO review) {
-        reviewService.createReview(review);
+    public ResponseEntity<String> createReview(@RequestBody ReviewDTO reviewDTO) {
+        reviewService.createReview(reviewDTO);  // DTO로 서비스에 전달
         return ResponseEntity.ok("리뷰 등록 완료");
     }
 
     @GetMapping
-    public ResponseEntity<List<ReviewVO>> getReviews(@RequestParam("product_id") Long productId) {
+    public ResponseEntity<List<ReviewDTO>> getReviews(@RequestParam("product_id") Long productId) {
         return ResponseEntity.ok(reviewService.getReviews(productId));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateReview(@PathVariable Long id, @RequestBody ReviewVO review) {
-        review.setReviewId(id);
-        reviewService.updateReview(review);
+    public ResponseEntity<String> updateReview(@PathVariable Long id, @RequestBody ReviewDTO reviewDTO) {
+        reviewDTO.setReviewId(id);  // path variable로 받은 ID 설정
+        reviewService.updateReview(reviewDTO);
         return ResponseEntity.ok("리뷰 수정 완료");
     }
 

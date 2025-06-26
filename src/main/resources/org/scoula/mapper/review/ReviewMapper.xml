@@ -6,22 +6,22 @@
 <mapper namespace="org.scoula.review.mapper.ReviewMapper">
 
     <insert id="insertReview">
-        INSERT INTO review (user_id, product_id, rating, coment)
-        VALUES (#{userId}, #{productId}, #{rating}, #{coment})
+        INSERT INTO reviews (user_id, product_id, rating, comment)
+        VALUES (#{userId}, #{productId}, #{rating}, #{comment})
     </insert>
 
     <select id="selectByProductId" resultType="org.scoula.review.domain.ReviewVO">
-        SELECT * FROM review WHERE product_id = #{productId}
+        SELECT * FROM reviews WHERE product_id = #{productId}
     </select>
 
     <update id="updateReview">
-        UPDATE review
-        SET rating = #{rating}, coment = #{coment}
+        UPDATE reviews
+        SET rating = #{rating}, comment = #{comment}
         WHERE review_id = #{reviewId}
     </update>
 
     <delete id="deleteReview">
-        DELETE FROM review WHERE review_id = #{reviewId}
+        DELETE FROM reviews WHERE review_id = #{reviewId}
     </delete>
 
 </mapper>
