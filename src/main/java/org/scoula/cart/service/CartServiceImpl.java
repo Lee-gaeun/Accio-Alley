@@ -64,7 +64,6 @@ public class CartServiceImpl implements CartService{
         CartVO updatedVO = new CartVO();
         updatedVO.setCartId(cartId);
         updatedVO.setQuantity(quantity);
-        // 실제로 DB에서 다시 조회하는 방법도 있지만, 단순 변환 예시
         return CartDTO.fromVO(updatedVO);
     }
 
