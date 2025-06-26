@@ -13,17 +13,6 @@ public class UserService {
     private final UserMapper userMapper;
 
     // 회원가입
-//    public UserDTO signup(UserDTO dto) {
-//        UserVO user = new UserVO();
-//        user.setEmail(dto.getEmail());
-//        user.setPassword(dto.getPassword()); //  평문 저장
-//        user.setName(dto.getName());
-//        user.setNickname(dto.getNickname());
-//
-//        userMapper.insertUser(user);
-//        return new UserDTO(user.getId(), user.getPassword(), user.getEmail(), user.getName(), user.getNickname());
-//    }
-// 회원가입
     public UserDTO signup(UserDTO dto) {
         UserVO user = dto.toVO();
         userMapper.insertUser(user); // user.id는 DB에서 자동 생성됨
@@ -35,16 +24,15 @@ public class UserService {
         if (user == null || !user.getPassword().equals(dto.getPassword())) {
             throw new RuntimeException("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
-//        return new UserDTO(
-//                user.getId(),
-//                user.getEmail(),
-//                user.getPassword(),
-//                user.getName(),
-//                user.getNickname()
-//        );
-//        UserVO vo = dto.toVO();
-//                userMapper.addToUser(vo);
-//        return UserDTO.fromVO(userVO);
         return UserDTO.fromVO(user);
     }
+    // 사용자 조회
+    public UserDTO findById(Long id) {
+        UserVO user = userMapper.findById(id);
+        if (user == null) {
+            throw new RuntimeException("해당 사용자를 찾을 수 없습니다.");
+        }
+        return UserDTO.fromVO(user);
+    }
+
 }

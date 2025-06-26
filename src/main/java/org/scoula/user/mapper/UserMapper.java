@@ -8,4 +8,6 @@ import org.scoula.user.domain.UserVO;
 public interface UserMapper {
     void insertUser(UserVO user);
     UserVO findByEmail(@Param("email") String email);
+    UserVO findById(Long id);
+
 }

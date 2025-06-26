@@ -13,12 +13,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<String> getAllUsers() {
-        return ResponseEntity.ok("GET 요청은 아직 구현되지 않았습니다.");
-    }
-
-
     @PostMapping
     public ResponseEntity<UserDTO> signup(@RequestBody UserDTO dto) {
         return ResponseEntity.ok(userService.signup(dto));
@@ -28,4 +22,9 @@ public class UserController {
     public ResponseEntity<UserDTO> login(@RequestBody UserDTO dto) {
         return ResponseEntity.ok(userService.login(dto));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.findById(id));
+    }
+
 }
