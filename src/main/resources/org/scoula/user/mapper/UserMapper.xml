@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.user.mapper.UserMapper">
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (email, password, name, nickname)
+        VALUES (#{email}, #{password}, #{name}, #{nickname})
+    </insert>
+
+    <select id="findByEmail" resultType="org.scoula.user.domain.UserVO">
+        SELECT * FROM users WHERE email = #{email}
+    </select>
+
+</mapper>
