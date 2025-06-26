@@ -1,5 +1,3 @@
--- DB가 없으면 → 생성
--- 이미 존재 -> 아무 작업 x
 CREATE DATABASE IF NOT EXISTS Accio_Alley;
 CREATE USER IF NOT EXISTS 'scoula'@'%' IDENTIFIED BY '비밀번호';
 GRANT ALL PRIVILEGES ON Accio_Alley.* TO 'scoula'@'%';
@@ -56,3 +54,4 @@ VALUES
     ('변신물약', '마시면 다른 모습으로 변할 수 있는 물약입니다.', 3000, 15),
     ('부엉이 우편세트', '마법 편지를 부엉이로 보낼 수 있는 세트 상품.', 2000, 20),
     ('호그와트 지도', '어디든지 다 볼 수 있는 마법 지도.', 6000, 5);
+
