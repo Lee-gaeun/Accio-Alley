@@ -2,6 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <data-source source="LOCAL" name="@localhost [2]" uuid="2aafd98d-a6d0-479e-ad63-454d387366f7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -14,6 +15,13 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/Accio_Alley</jdbc-url>
 >>>>>>> develop
+=======
+    <data-source source="LOCAL" name="@localhost" uuid="1c2206c4-8036-49b7-8170-04426d07e4ec">
+      <driver-ref>mysql_aurora.aws_wrapper</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>software.amazon.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:aws-wrapper:mysql://localhost:3306/</jdbc-url>
+>>>>>>> feature/review
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
