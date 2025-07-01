@@ -45,3 +45,13 @@ CREATE TABLE reviews (
                          FOREIGN KEY (user_id) REFERENCES users(id),
                          FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+-- 상품 추가
+INSERT INTO products (product_name, description, price, quantity)
+VALUES
+    ('마법지팡이', '강력한 마력을 품은 지팡이입니다.', 5000, 10),
+    ('투명망토', '입으면 투명해지는 마법의 망토입니다.', 8000, 3),
+    ('변신물약', '마시면 다른 모습으로 변할 수 있는 물약입니다.', 3000, 15),
+    ('부엉이 우편세트', '마법 편지를 부엉이로 보낼 수 있는 세트 상품.', 2000, 20),
+    ('호그와트 지도', '어디든지 다 볼 수 있는 마법 지도.', 6000, 5);
+
